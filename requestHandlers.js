@@ -1,7 +1,5 @@
 // 20181230 Modify By Kevin.Kuo: 加入 querystring 模組
-var querystring = require("querystring"), 
-	// 20190113 Add By Kevin.Kuo: 加入 fs 模組，讀檔案到伺服器中
-	fs = require("fs");
+var querystring = require("querystring");
 
 
 // 20181025 Add By Kevin.Kuo: 新增 start 方法，當 url 傳送 start 則呼叫該方法
@@ -39,22 +37,5 @@ function upload(response, postData) {
 	response.end();
 }
 
-// 20190113 Add By Kevin.Kuo: 新增 show 方法，當 /show 時，顯示圖檔
-function show(response, postData) {
-  console.log("Request handler 'show' was called.");
-  fs.readFile("/Users/kuosyuan/Program/Node js/Hello World/image/test.png", "binary", function(error, file) {
-    if(error) {
-      response.writeHead(500, {"Content-Type": "text/plain"});
-      response.write(error + "\n");
-      response.end();
-    } else {
-      response.writeHead(200, {"Content-Type": "image/png"});
-      response.write(file, "binary");
-      response.end();
-    }
-  });
-}
-
 exports.start = start;
 exports.upload = upload;
-exports.show = show;
