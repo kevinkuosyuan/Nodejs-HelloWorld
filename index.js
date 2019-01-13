@@ -6,5 +6,6 @@ var handlers = {};
 handlers["/"] = requestHandlers.start;
 handlers["/start"] = requestHandlers.start;
 handlers["/upload"] = requestHandlers.upload;
+handlers["/show"] = requestHandlers.show;
 
 server.openserver(route.route, handlers);
